@@ -212,13 +212,16 @@ open class AnimatedTextInput: UIControl {
     fileprivate var placeholderErrorText: String?
 
     fileprivate var placeholderPosition: CGPoint {
+        let bHeight = bounds.height
+        let defaultPositionCenterY = (bHeight / 2) - (style.textInputFont.pointSize / 2)
+
         let hintPosition = CGPoint(
             x: placeholderAlignment != .natural ? 0 : style.leftMargin,
             y: style.yHintPositionOffset
         )
         let defaultPosition = CGPoint(
             x: placeholderAlignment != .natural ? 0 : style.leftMargin,
-            y: style.topMargin + style.yPlaceholderPositionOffset
+            y: defaultPositionCenterY
         )
         return isPlaceholderAsHint ? hintPosition : defaultPosition
     }
